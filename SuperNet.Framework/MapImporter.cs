@@ -23,7 +23,7 @@ namespace SuperNet.Framework
             }
 
             var map = new Map();
-            if (_mapDataSource.HasNext) {
+            while (_mapDataSource.HasNext) {
                 var raw = _mapDataSource.ReadLine();
                 var vector = GenerateVector(raw);
                 map.Add(vector);
