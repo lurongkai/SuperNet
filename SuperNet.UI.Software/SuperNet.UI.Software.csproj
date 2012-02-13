@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>29bc09f9-a3ca-423b-90f4-9dc62b6f5ede</ProjectGuid>
+    <ProjectGuid>{489DF307-6C14-400F-9D2A-DA5299DD2D3B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SuperNet.UI.Software</RootNamespace>

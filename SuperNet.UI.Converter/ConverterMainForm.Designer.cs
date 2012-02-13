@@ -1,6 +1,6 @@
 ﻿namespace SuperNet.UI.Converter
 {
-    partial class Form1
+    partial class ConverterMainForm
     {
         /// <summary>
         /// Required designer variable.

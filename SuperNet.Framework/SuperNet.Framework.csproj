@@ -43,6 +43,9 @@
     <Compile Include="Domain\Map.cs" />
     <Compile Include="Domain\Node.cs" />
     <Compile Include="Domain\Vector.cs" />
+    <Compile Include="DataSource\IDataSource.cs" />
+    <Compile Include="MapExporter.cs" />
+    <Compile Include="MapImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
