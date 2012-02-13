@@ -1,1 +1,8 @@
 E:\DotNET Project\SuperNet\SuperNet.UI.Software\bin\Debug\SuperNet.UI.Software.exe
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\bin\Debug\SuperNet.UI.Software.pdb
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\obj\x86\Debug\SuperNet.UI.Software.Properties.Resources.resources
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\obj\x86\Debug\SuperNet.UI.Software.exe
+E:\DotNET Project\SuperNet\SuperNet.UI.Software\obj\x86\Debug\SuperNet.UI.Software.pdb

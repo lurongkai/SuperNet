@@ -1,0 +1,15 @@
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\SuperNet.UI.Converter.exe
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\SuperNet.UI.Converter.pdb
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\SuperNet.UI.Converter.Properties.Resources.resources
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\SuperNet.UI.Converter.exe
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\SuperNet.UI.Converter.pdb
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\SuperNet.Framework.dll
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\LinqToExcel.dll
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\Remotion.Data.Linq.dll
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\log4net.dll
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\SuperNet.Framework.pdb
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\bin\Debug\LinqToExcel.xml
+E:\DotNET Project\SuperNet\SuperNet.UI.Converter\obj\x86\Debug\SuperNet.UI.Converter.ConverterMainForm.resources

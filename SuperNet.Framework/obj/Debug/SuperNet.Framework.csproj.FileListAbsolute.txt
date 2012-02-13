@@ -1,0 +1,11 @@
+E:\DotNET Project\SuperNet\SuperNet.Framework\obj\Debug\ResolveAssemblyReference.cache
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\SuperNet.Framework.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\SuperNet.Framework.pdb
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\LinqToExcel.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\log4net.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\Remotion.Data.Linq.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\Remotion.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\Remotion.Interfaces.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\bin\Debug\LinqToExcel.xml
+E:\DotNET Project\SuperNet\SuperNet.Framework\obj\Debug\SuperNet.Framework.dll
+E:\DotNET Project\SuperNet\SuperNet.Framework\obj\Debug\SuperNet.Framework.pdb

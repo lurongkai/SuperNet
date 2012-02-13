@@ -1,0 +1,5 @@
+E:\DotNET Project\SuperNet\SuperNet.UI\bin\Debug\SuperNet.UI.dll
+E:\DotNET Project\SuperNet\SuperNet.UI\bin\Debug\SuperNet.UI.pdb
+E:\DotNET Project\SuperNet\SuperNet.UI\obj\Debug\ResolveAssemblyReference.cache
+E:\DotNET Project\SuperNet\SuperNet.UI\obj\Debug\SuperNet.UI.dll
+E:\DotNET Project\SuperNet\SuperNet.UI\obj\Debug\SuperNet.UI.pdb
