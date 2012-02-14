@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using SuperNet.Framework.Domain;
 
-namespace SuperNet.Framework.Source
+namespace SuperNet.Framework.Target
 {
-    public interface IMapDataSource
+    public interface IExportTarget
     {
-        bool HasNext { get; }
-        string[] ReadLine();
+        void ExportMap(string path);
     }
 }

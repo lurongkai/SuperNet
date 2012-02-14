@@ -27,7 +27,7 @@ namespace SuperNet.Framework.Domain
                 return false;
             }
 
-            return (obj as Node).NodeID == this.NodeID;
+            return (obj as Node).NodeName == this.NodeName;
         }
     }
 }

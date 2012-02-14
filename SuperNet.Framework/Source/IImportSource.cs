@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using SuperNet.Framework.Domain;
 
-namespace SuperNet.Framework.Target
+namespace SuperNet.Framework.Source
 {
-    public interface ITargetFormater
+    public interface IImportSource
     {
-        void WriteLine(Vector vector);
-        void Save();
+        Map ImportMap();
     }
 }

@@ -2,29 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SuperNet.Framework.Domain;
 
 namespace SuperNet.Framework.Source
 {
-    public class MapDataSourceBase:IMapDataSource
+    public class MapDataSourceBase:IImportSource
     {
-        private int index;
-        protected IList<string[]> lines;
+        protected IDictionary<string, Node> _nodeDict = new Dictionary<string, Node>();
+        protected int _nodeID = 1;
 
-        public virtual bool HasNext {
-            get {
-                return lines.Count > index;
-            }
+        public virtual Map ImportMap() {
+            throw new NotImplementedException();
         }
 
-        public virtual string[] ReadLine() {
-            if (HasNext) {
-                return lines[index++];
-            }
-            return null;
+        protected Vector GenerateVector(string[] vectorRaw) {
+            var nodeFrom = GenerateNode(vectorRaw[0]);
+            var nodeTo = GenerateNode(vectorRaw[1]);
+
+            return new Vector() { From = nodeFrom, To = nodeTo };
         }
 
-        public virtual void Reset() {
-            index = 0;
+        protected Node GenerateNode(string nodeRaw) {
+            if (_nodeDict.Keys.Contains(nodeRaw)) {
+                return _nodeDict[nodeRaw];
+            }
+
+            var node = new Node {
+                NodeID = _nodeID++,
+                NodeName = nodeRaw
+            };
+
+            return node;
         }
     }
 }

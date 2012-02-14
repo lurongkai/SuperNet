@@ -32,8 +32,7 @@ namespace SuperNet.UI.Converter
                 try {
                     _path = dialog.FileName;
                     var source = new ExcelMapDataSource(_path);
-                    var importer = new MapImporter(source);
-                    _map = importer.GenerateMap();
+                    _map = source.ImportMap();
 
                     label1.Text = _path;
                     button2.Enabled = true;
@@ -49,11 +48,10 @@ namespace SuperNet.UI.Converter
                 return;
             }
 
-            var target = new PajekTargetFormater(@"C:\result.net");
-            var exporter = new MapExporter(_map, target);
+            var target = new PajekTargetFormater(_map);
 
             try {
-                exporter.Export();
+                target.ExportMap(@"C:\result.net");
                 MessageBox.Show("导出成功.");
             } catch {
                 MessageBox.Show("导出失败.");

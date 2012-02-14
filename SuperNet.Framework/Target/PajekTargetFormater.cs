@@ -7,60 +7,77 @@ using System.IO;
 
 namespace SuperNet.Framework.Target
 {
-    public class PajekTargetFormater : ITargetFormater
+    public class PajekTargetFormater : IExportTarget
     {
-        private string _path;
-        private IDictionary<string,int> _nodes = new Dictionary<string,int>();
-        private IList<string> _vectors = new List<string>();
+        private const string nodeSectionPrefixFormat = "*Vertices {0}";
+        private const string nodeFormat = "{0} \"{1}\"";
+        private const string vectorSectionPrefix = "*Arcs";
+        private const string vectorFormat = "{0} {1}";
+
+        private Map _map;
+        private IDictionary<string, int> _nodeCache = new Dictionary<string, int>();
         private int _nodeID = 1;
 
-        public PajekTargetFormater(string path) {
-            _path = path;
+        public PajekTargetFormater(Map map) {
+            _map = map;
         }
-        public void WriteLine(Vector vector) {
-            if (vector == null) {
-                return;
+
+        public void ExportMap(string path) {
+            var nodeList = GenerateNodeList();
+            var vectorList = new List<string>();
+
+            foreach (var vector in _map) {
+                Walk(vector, vectorList);
             }
 
-            var from = GenerateNode(vector.From);
-            var to = GenerateNode(vector.To);
-
-            var vectorFormat = "{0} {1}";
-            var line = String.Format(vectorFormat, from, to);
-            _vectors.Add(line);
+            GenerateFile(nodeList, vectorList, path);
         }
 
-        private int GenerateNode(Node node) {
-            if (!_nodes.Keys.Contains(node.NodeName)) {
-                var id = _nodeID++;
-                _nodes.Add(new KeyValuePair<string,int>(node.NodeName, id));
-                return id;
-            }
-
-            return _nodes[node.NodeName];
-        }
-
-        public void Save() {
-            using (var file = new StreamWriter(_path)) {
-                WriteNodes(file);
-                WriteVectors(file);
+        private void GenerateFile(IList<string> nodeList, List<string> vectorList, string path) {
+            using (var file = new StreamWriter(path)) {
+                WriteNodesSection(nodeList, file);
+                WriteVectorsSection(vectorList, file);
             }
         }
 
-        private void WriteVectors(StreamWriter file) {
-            file.WriteLine("*Arcs");
-            foreach (var vector in _vectors) {
-                file.WriteLine(vector);
+        private IList<string> GenerateNodeList() {
+            var nodes = _map.GetAllNodes()
+                .OrderBy(node => node.NodeID);
+
+            var nodeList = new List<string>();
+            foreach (var node in nodes) {
+                var nodeName = node.NodeName;
+                if (!_nodeCache.Keys.Contains(nodeName)) {
+                    _nodeCache.Add(nodeName, _nodeID++);
+                }
+                nodeList.Add(String.Format(
+                    nodeFormat, 
+                    _nodeCache[nodeName], 
+                    nodeName));
+            }
+
+            return nodeList;
+        }
+
+        private void Walk(Vector vector, IList<string> vectorList) {
+            var fromNodeName = vector.From.NodeName;
+            var toNodeName = vector.To.NodeName;
+            vectorList.Add(String.Format(
+                vectorFormat, 
+                _nodeCache[fromNodeName],
+                _nodeCache[toNodeName]));
+        }
+
+        private void WriteNodesSection(IList<string> nodeList, StreamWriter file) {
+            file.WriteLine(String.Format(nodeSectionPrefixFormat, nodeList.Count()));
+            foreach (var line in nodeList) {
+                file.WriteLine(line);
             }
         }
 
-        private void WriteNodes(StreamWriter file) {
-            var prefix = String.Format("*Vertices {0}", _nodes.Count);
-            file.WriteLine(prefix);
-
-            var nodeFormat = "{0} \"{1}\"";
-            foreach (var node in _nodes) {
-                var line = String.Format(nodeFormat, node.Value, node.Key);
+        private void WriteVectorsSection(IList<string> vectorList, StreamWriter file) {
+            file.WriteLine(vectorSectionPrefix);
+            foreach (var line in vectorList) {
                 file.WriteLine(line);
             }
         }
