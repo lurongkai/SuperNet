@@ -9,7 +9,6 @@ namespace SuperNet.Framework.Source
     public class MapDataSourceBase:IImportSource
     {
         protected IDictionary<string, Node> _nodeDict = new Dictionary<string, Node>();
-        protected int _nodeID = 1;
 
         public virtual Map ImportMap() {
             throw new NotImplementedException();
@@ -28,7 +27,6 @@ namespace SuperNet.Framework.Source
             }
 
             var node = new Node {
-                NodeID = _nodeID++,
                 NodeName = nodeRaw
             };
 

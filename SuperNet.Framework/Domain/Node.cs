@@ -7,16 +7,10 @@ namespace SuperNet.Framework.Domain
 {
     public class Node
     {
-        public int NodeID { get; set; }
         public string NodeName { get; set; }
 
         public override string ToString() {
-            var format = "{0}:{1}";
-            return String.Format(format, NodeID, NodeName);
-        }
-
-        public override int GetHashCode() {
-            return NodeID;
+            return NodeName;
         }
 
         public override bool Equals(object obj) {
@@ -28,6 +22,10 @@ namespace SuperNet.Framework.Domain
             }
 
             return (obj as Node).NodeName == this.NodeName;
+        }
+
+        public override int GetHashCode() {
+            return NodeName.GetHashCode();
         }
     }
 }
