@@ -78,20 +78,8 @@ namespace SuperNet.Framework.Domain
             _nodes.Add(node);
         }
 
-        internal IList<Node> GetAllNodes() {
-            var allNodes = new List<Node>();
-            foreach (var vector in _vectors) {                
-                NodeExist(allNodes, vector.From);
-                NodeExist(allNodes, vector.To);
-            }
-
-            return allNodes;
-        }
-
-        private void NodeExist(IList<Node> nodes, Node node){
-            if (!nodes.Contains(node)) {
-                nodes.Add(node);
-            }
+        internal IList<Node> AllNodes {
+            get { return _nodes; }
         }
     }
 }

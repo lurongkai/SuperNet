@@ -41,7 +41,7 @@ namespace SuperNet.Framework.Target
         }
 
         private IList<string> GenerateNodeList() {
-            var nodes = _map.GetAllNodes();
+            var nodes = _map.AllNodes;
 
             var nodeList = new List<string>();
             foreach (var node in nodes) {

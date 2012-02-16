@@ -12,5 +12,9 @@ namespace SuperNet.Framework.Parameter
         public ParameterCalculater(Map map) {
             _map = map;
         }
+
+        public int CalcShortestPath(Node one, Node two) {
+            throw new NotImplementedException();
+        }
     }
 }
