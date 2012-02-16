@@ -10,7 +10,7 @@ namespace SuperNet.Framework.Domain
         private IList<Vector> _vectors;
 
         public Node() {
-            _vectors = new List<Node>();
+            _vectors = new List<Vector>();
         }
 
         public string NodeName { get; set; }

@@ -9,6 +9,7 @@ namespace SuperNet.Framework.Domain
     public class Map:IList<Vector>
     {
         private IList<Vector> _vectors = new List<Vector>();
+        private IList<Node> _nodes = new List<Node>();
 
         public int IndexOf(Vector item) {
             return _vectors.IndexOf(item);
@@ -32,6 +33,9 @@ namespace SuperNet.Framework.Domain
         }
 
         public void Add(Vector item) {
+            SaveNode(item.From);
+            SaveNode(item.To);
+
             _vectors.Add(item);
         }
 
@@ -65,6 +69,13 @@ namespace SuperNet.Framework.Domain
 
         IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
+        }
+
+        private void SaveNode(Node node) {
+            if (_nodes.Contains(node)) {
+                return;
+            }
+            _nodes.Add(node);
         }
 
         internal IList<Node> GetAllNodes() {

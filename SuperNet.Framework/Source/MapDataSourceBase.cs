@@ -18,7 +18,7 @@ namespace SuperNet.Framework.Source
             var nodeFrom = GenerateNode(vectorRaw[0]);
             var nodeTo = GenerateNode(vectorRaw[1]);
 
-            return new Vector() { From = nodeFrom, To = nodeTo };
+            return new Vector(nodeFrom, nodeTo);
         }
 
         protected Node GenerateNode(string nodeRaw) {
