@@ -86,5 +86,17 @@ namespace SuperNet.Framework.Domain
             return VertexName.GetHashCode();
         }
         #endregion
+
+        internal IEnumerable<Vertex> ReachableVertexs(bool directed) {
+            if (directed) {
+                return _edges.Select(edge => edge.To);
+            } else {
+                return _edges
+                    .Select(edge => edge.From)
+                    .Concat(_edges.Select(edge => edge.To))
+                    .Distinct()
+                    .Except(new List<Vertex> { this });
+            }
+        }
     }
 }

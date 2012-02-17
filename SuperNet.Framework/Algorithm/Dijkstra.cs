@@ -14,52 +14,62 @@ namespace SuperNet.Framework.Algorithm
             _map = map;
         }
 
-
-
-        public int ShortestPathValue(Vertex vetex, bool directed = false/*, bool withWeight = false*/) {
-            var sureSet = new List<Vertex>();
-            var unsureset = new List<Vertex>();
-
-            sureSet.Add(vetex);
-            unsureset.AddRange(_map.AllVertexs.Except(new List<Vertex> { vetex }));
-
-            var resultArray = new Dictionary<Vertex, PathValue>(_map.AllVertexs.Count);
-            CalculateByDijkstra(vetex, _map.AllVertexs, sureSet, unsureset, resultArray, directed);
-
-            return resultArray.Select(
+        public int ShortestPathSum(Vertex start, bool directed = false) {
+            return ShortestPathResult(start, directed).Select(
                 kvp => {
                     var v = kvp.Value;
                     return v.HasValue ? v.Value : 0;
                 }).Sum();
         }
 
-        private void CalculateByDijkstra(Vertex vetex, IList<Vertex> allVetexs, IList<Vertex> sureSet, IList<Vertex> unsureSet, IDictionary<Vertex, PathValue> resultArray, bool directed) {
-            Func<Vertex, bool> connectivityChecker;
+        public IDictionary<Vertex, PathValue> ShortestPathResult(Vertex start, bool directed = false/*, bool withWeight = false*/) {
+            var sureSet = new List<Vertex>();
+            var unsureset = new List<Vertex>();
+
+            unsureset.AddRange(_map.AllVertexs);
+
+            var resultArray = new Dictionary<Vertex, PathValue>(_map.AllVertexs.Count);
+            CalculateByDijkstra(start, _map.AllVertexs, sureSet, unsureset, resultArray, directed);
+
+            return resultArray;
+        }
+
+        private void CalculateByDijkstra(Vertex start, IList<Vertex> allVetexs, IList<Vertex> sureSet, IList<Vertex> unsureSet, IDictionary<Vertex, PathValue> resultArray, bool directed) {
+            sureSet.Add(start);
+            for (int i = 0; i < allVetexs.Count; i++) {
+                foreach (var vertex in start.ReachableVertexs(directed)) {
+                    var vertexPathValue = EvaluatePathValueBySureSet(vertex, sureSet, resultArray, directed);
+                    if (resultArray.Keys.Contains(vertex)) {
+                        resultArray[vertex] = new PathValue { Value = vertexPathValue };
+                    } else {
+                        resultArray.Add(vertex, new PathValue { Value = vertexPathValue });
+                    }
+                }
+            }
         }
 
         private int EvaluatePathValueBySureSet(Vertex targetVertex, IList<Vertex> sureSet, IDictionary<Vertex, PathValue> resultArray, bool directed) {
-            if (sureSet.Count == 0) {
+            if (sureSet.Contains(targetVertex)) {
                 return 0;//Self.
             }
 
             int minPathValue = 0;
-            foreach (var vertex in sureSet) {
-                if (!targetVertex.ConnectedWith(vertex)) {
-                    continue;
-                }
 
-                var prePathValue = resultArray[vertex].Value;
-                var edge = targetVertex.FindEdgeByVertex(vertex, directed);
-                var currentPathValue = prePathValue+edge.Weight;
-                if (currentPathValue < minPathValue) {
-                    minPathValue = currentPathValue;
-                }
+            var allWeights = sureSet
+                .Where(vertex => !vertex.ConnectedWith(vertex))
+                .Select(vertex => {
+                    var edge = vertex.FindEdgeByVertex(targetVertex, directed);
+                    return edge.Weight;
+                });
+            if (allWeights.Count() > 0) {
+                minPathValue = allWeights.Min();
             }
 
             return minPathValue;
         }
 
-        private class PathValue {
+        public class PathValue
+        {
             private int _value;
 
             public bool HasValue { get; private set; }

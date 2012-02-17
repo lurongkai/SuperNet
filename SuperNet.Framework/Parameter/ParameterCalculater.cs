@@ -12,9 +12,5 @@ namespace SuperNet.Framework.Parameter
         public ParameterCalculater(Map map) {
             _map = map;
         }
-
-        public int CalcShortestPath(Vertex one, Vertex two) {
-            throw new NotImplementedException();
-        }
     }
 }

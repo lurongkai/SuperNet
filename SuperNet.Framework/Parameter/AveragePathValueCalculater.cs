@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SuperNet.Framework.Domain;
+using SuperNet.Framework.Algorithm;
 
 namespace SuperNet.Framework.Parameter
 {
@@ -15,15 +16,14 @@ namespace SuperNet.Framework.Parameter
             var vertexCount = allVertexs.Count;
 
             var allVertexShortestPathSum = 0;
-            for (int i = 0; i < vertexCount; i++) {
-                for (int j = 0; j < vertexCount; j++) {
-                    allVertexShortestPathSum += CalcShortestPath(allVertexs[i], allVertexs[j]);
-                }    
+            var dijkstra = GraphAlogrithmFactory.DijkstraAlogrithm(_map);
+            foreach (var vertex in _map.AllVertexs) {
+                dijkstra.ShortestPathSum(vertex);
             }
 
             var fullArrayEdge = vertexCount * (vertexCount - 1) / 2;
 
-            return (double)allVertexShortestPathSum / fullArrayEdge;
+            return (double)allVertexShortestPathSum *2 / fullArrayEdge;
         }
     }
 }
