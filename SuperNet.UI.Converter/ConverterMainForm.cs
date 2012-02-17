@@ -10,6 +10,7 @@ using SuperNet.Framework.Source;
 using SuperNet.Framework.Domain;
 using SuperNet.Framework;
 using SuperNet.Framework.Target;
+using SuperNet.Framework.Parameter;
 
 namespace SuperNet.UI.Converter
 {
@@ -35,7 +36,11 @@ namespace SuperNet.UI.Converter
                     _map = source.ImportMap();
 
                     label1.Text = _path;
-                    button2.Enabled = true;
+                    btnInDegree.Enabled = true;
+                    btnOutDegree.Enabled = true;
+                    btnAverageDegree.Enabled = true;
+                    btnAveragePath.Enabled = true;
+                    btnExport.Enabled = true;
                 } catch {
                     MessageBox.Show("未知文件.");
                 }
@@ -55,6 +60,71 @@ namespace SuperNet.UI.Converter
                 MessageBox.Show("导出成功.");
             } catch {
                 MessageBox.Show("导出失败.");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e) {
+            var calculater = new DegreeCalculater(_map);
+            try {
+                MessageBox.Show(
+                    "Value",
+                    calculater.CalcInDegree().ToString(),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e) {
+            var calculater = new DegreeCalculater(_map);
+            try {
+                MessageBox.Show(
+                    "Value",
+                    calculater.CalcOutDegree().ToString(),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e) {
+            var calculater = new DegreeCalculater(_map);
+            try {
+                MessageBox.Show(
+                    "Value",
+                    calculater.CalcAverageDegree().ToString(),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e) {
+            var calculater = new ClusteringCalculater(_map);
+            try {
+                MessageBox.Show(
+                    "Value",
+                    calculater.CalcClustering().ToString(),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e) {
+            var calculater = new AveragePathValueCalculater(_map);
+            try {
+                MessageBox.Show(
+                    "Value",
+                    calculater.CalcAveragePathValue().ToString(),
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
     }
