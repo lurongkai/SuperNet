@@ -24,8 +24,8 @@ namespace SuperNet.Framework.Source
 
             var map = new Map();
             foreach (var line in rawData) {
-                var vector = GenerateVector(line);
-                map.Add(vector);
+                var edge = GenerateEdge(line);
+                map.Add(edge);
             }
 
             return map;

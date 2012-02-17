@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\Dijkstra.cs" />
+    <Compile Include="Algorithm\GraphAlogrithmFactory.cs" />
     <Compile Include="Parameter\AveragePathValueCalculater.cs" />
     <Compile Include="Parameter\ClusteringCalculater.cs" />
     <Compile Include="Parameter\DegreeCalculater.cs" />
@@ -62,8 +64,8 @@
     <Compile Include="Source\ExcelMapDataSource.cs" />
     <Compile Include="Source\MapDataSourceBase.cs" />
     <Compile Include="Domain\Map.cs" />
-    <Compile Include="Domain\Node.cs" />
-    <Compile Include="Domain\Vector.cs" />
+    <Compile Include="Domain\Vertex.cs" />
+    <Compile Include="Domain\Edge.cs" />
     <Compile Include="Source\IImportSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Target\IExportTarget.cs" />

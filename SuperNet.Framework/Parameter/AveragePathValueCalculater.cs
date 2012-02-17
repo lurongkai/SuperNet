@@ -11,19 +11,19 @@ namespace SuperNet.Framework.Parameter
         public AveragePathValueCalculater(Map map) : base(map) { }
 
         public double CalcAveragePathValue() {
-            var allNode = _map.AllNodes;
-            var nodeCount = allNode.Count;
+            var allVertexs = _map.AllVertexs;
+            var vertexCount = allVertexs.Count;
 
-            var allNodeShortestPathSum = 0;
-            for (int i = 0; i < nodeCount; i++) {
-                for (int j = 0; j < nodeCount; j++) {
-                    allNodeShortestPathSum += CalcShortestPath(allNode[i], allNode[j]);
+            var allVertexShortestPathSum = 0;
+            for (int i = 0; i < vertexCount; i++) {
+                for (int j = 0; j < vertexCount; j++) {
+                    allVertexShortestPathSum += CalcShortestPath(allVertexs[i], allVertexs[j]);
                 }    
             }
 
-            var fullArrayEdge = nodeCount * (nodeCount - 1) / 2;
+            var fullArrayEdge = vertexCount * (vertexCount - 1) / 2;
 
-            return (double)allNodeShortestPathSum / fullArrayEdge;
+            return (double)allVertexShortestPathSum / fullArrayEdge;
         }
     }
 }

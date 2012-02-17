@@ -12,25 +12,25 @@ namespace SuperNet.Framework.Parameter
 
         public double CalcInDegree() {
             var inDegree = 0;
-            foreach (var node in _map.AllNodes) {
-                inDegree += node.InDegreeVector.Count();
+            foreach (var vertex in _map.AllVertexs) {
+                inDegree += vertex.InDegreeEdge.Count();
             }
 
-            return (double)inDegree / _map.AllNodes.Count;
+            return (double)inDegree / _map.AllVertexs.Count;
         }
 
         public double CalcOutDegree() {
             var outDegree = 0;
-            foreach (var node in _map.AllNodes) {
-                outDegree += node.OutDegreeVector.Count();
+            foreach (var vertex in _map.AllVertexs) {
+                outDegree += vertex.OutDegreeEdge.Count();
             }
 
-            return (double)outDegree / _map.AllNodes.Count;
+            return (double)outDegree / _map.AllVertexs.Count;
         }
 
         public double CalcAverageDegree() {
-            var vectors = _map.Count * 2;
-            return (double)vectors / _map.AllNodes.Count;
+            var edges = _map.Count * 2;
+            return (double)edges / _map.AllVertexs.Count;
         }
     }
 }

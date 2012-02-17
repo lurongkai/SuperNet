@@ -8,29 +8,29 @@ namespace SuperNet.Framework.Source
 {
     public class MapDataSourceBase:IImportSource
     {
-        protected IDictionary<string, Node> _nodeDict = new Dictionary<string, Node>();
+        protected IDictionary<string, Vertex> _vertexDict = new Dictionary<string, Vertex>();
 
         public virtual Map ImportMap() {
             throw new NotImplementedException();
         }
 
-        protected Vector GenerateVector(string[] vectorRaw) {
-            var nodeFrom = GenerateNode(vectorRaw[0]);
-            var nodeTo = GenerateNode(vectorRaw[1]);
+        protected Edge GenerateEdge(string[] edgeRaw) {
+            var edgeFrom = GenerateVertex(edgeRaw[0]);
+            var edgeTo = GenerateVertex(edgeRaw[1]);
 
-            return new Vector(nodeFrom, nodeTo);
+            return new Edge(edgeFrom, edgeTo);
         }
 
-        protected Node GenerateNode(string nodeRaw) {
-            if (_nodeDict.Keys.Contains(nodeRaw)) {
-                return _nodeDict[nodeRaw];
+        protected Vertex GenerateVertex(string vertexRaw) {
+            if (_vertexDict.Keys.Contains(vertexRaw)) {
+                return _vertexDict[vertexRaw];
             }
 
-            var node = new Node {
-                NodeName = nodeRaw
+            var vertex = new Vertex {
+                VertexName = vertexRaw
             };
 
-            return node;
+            return vertex;
         }
     }
 }

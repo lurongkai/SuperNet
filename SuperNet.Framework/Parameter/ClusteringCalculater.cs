@@ -10,13 +10,13 @@ namespace SuperNet.Framework.Parameter
     {
         public ClusteringCalculater(Map map) : base(map) { }
 
-        public double CalcClustering(Node node) {
-            var nodeDegree = node.Vectors.Count;
-            var nodeCount = _map.AllNodes.Count;
+        public double CalcClustering(Vertex vertex) {
+            var vertexDegree = vertex.Edges.Count;
+            var vertexCount = _map.AllVertexs.Count;
 
-            var fullArrayEdge = nodeCount * (nodeCount - 1) / 2;
+            var fullArrayEdge = vertexCount * (vertexCount - 1) / 2;
 
-            return (double)nodeDegree / fullArrayEdge;
+            return (double)vertexDegree / fullArrayEdge;
         }
     }
 }

@@ -5,31 +5,31 @@ using System.Text;
 
 namespace SuperNet.Framework.Domain
 {
-    public class Vector
+    public class Edge
     {
-        private Node _from;
-        private Node _to;
+        private Vertex _from;
+        private Vertex _to;
 
-        public Vector(Node from, Node to) {
+        public Edge(Vertex from, Vertex to) {
             _from = from;
             _to = to;
 
-            _from.Vectors.Add(this);
-            _to.Vectors.Add(this);
+            _from.Edges.Add(this);
+            _to.Edges.Add(this);
         }
 
-        public Node From {
+        public Vertex From {
             get { return _from; }
         }
 
-        public Node To {
+        public Vertex To {
             get { return _to; }
         }
 
         #region override
         public override string ToString() {
             var format = "{0}-{1}";
-            return String.Format(format, From.NodeName, To.NodeName);
+            return String.Format(format, From.VertexName, To.VertexName);
         }
 
         public override bool Equals(object obj) {
@@ -40,7 +40,7 @@ namespace SuperNet.Framework.Domain
                 return false;
             }
 
-            var target = (obj as Vector);
+            var target = (obj as Edge);
             return target.From == this.From &&
                    target.To == this.To;
         }

@@ -9,74 +9,74 @@ namespace SuperNet.Framework.Target
 {
     public class PajekTargetFormater : IExportTarget
     {
-        private const string nodeSectionPrefixFormat = "*Vertices {0}";
-        private const string nodeFormat = "{0} \"{1}\"";
-        private const string vectorSectionPrefix = "*Arcs";
-        private const string vectorFormat = "{0} {1}";
+        private const string vertexSectionPrefixFormat = "*Vertices {0}";
+        private const string vertexFormat = "{0} \"{1}\"";
+        private const string edgeSectionPrefix = "*Arcs";
+        private const string edgeFormat = "{0} {1}";
 
         private Map _map;
-        private IDictionary<string, int> _nodeCache = new Dictionary<string, int>();
-        private int _nodeID = 1;
+        private IDictionary<string, int> _vertexCache = new Dictionary<string, int>();
+        private int _vertexID = 1;
 
         public PajekTargetFormater(Map map) {
             _map = map;
         }
 
         public void ExportMap(string path) {
-            var nodeList = GenerateNodeList();
-            var vectorList = new List<string>();
+            var vertexList = GenerateVertexList();
+            var edgeList = new List<string>();
 
-            foreach (var vector in _map) {
-                Walk(vector, vectorList);
+            foreach (var edge in _map) {
+                Walk(edge, edgeList);
             }
 
-            GenerateFile(nodeList, vectorList, path);
+            GenerateFile(vertexList, edgeList, path);
         }
 
-        private void GenerateFile(IList<string> nodeList, List<string> vectorList, string path) {
+        private void GenerateFile(IList<string> vertexList, List<string> edgeList, string path) {
             using (var file = new StreamWriter(path)) {
-                WriteNodesSection(nodeList, file);
-                WriteVectorsSection(vectorList, file);
+                WriteVertexsSection(vertexList, file);
+                WriteEdgesSection(edgeList, file);
             }
         }
 
-        private IList<string> GenerateNodeList() {
-            var nodes = _map.AllNodes;
+        private IList<string> GenerateVertexList() {
+            var vertexs = _map.AllVertexs;
 
-            var nodeList = new List<string>();
-            foreach (var node in nodes) {
-                var nodeName = node.NodeName;
-                if (!_nodeCache.Keys.Contains(nodeName)) {
-                    _nodeCache.Add(nodeName, _nodeID++);
+            var vertexList = new List<string>();
+            foreach (var vertex in vertexs) {
+                var vertexName = vertex.VertexName;
+                if (!_vertexCache.Keys.Contains(vertexName)) {
+                    _vertexCache.Add(vertexName, _vertexID++);
                 }
-                nodeList.Add(String.Format(
-                    nodeFormat, 
-                    _nodeCache[nodeName], 
-                    nodeName));
+                vertexList.Add(String.Format(
+                    vertexFormat, 
+                    _vertexCache[vertexName], 
+                    vertexName));
             }
 
-            return nodeList;
+            return vertexList;
         }
 
-        private void Walk(Vector vector, IList<string> vectorList) {
-            var fromNodeName = vector.From.NodeName;
-            var toNodeName = vector.To.NodeName;
-            vectorList.Add(String.Format(
-                vectorFormat, 
-                _nodeCache[fromNodeName],
-                _nodeCache[toNodeName]));
+        private void Walk(Edge edge, IList<string> edgeList) {
+            var fromVertexName = edge.From.VertexName;
+            var toVertexName = edge.To.VertexName;
+            edgeList.Add(String.Format(
+                edgeFormat, 
+                _vertexCache[fromVertexName],
+                _vertexCache[toVertexName]));
         }
 
-        private void WriteNodesSection(IList<string> nodeList, StreamWriter file) {
-            file.WriteLine(String.Format(nodeSectionPrefixFormat, nodeList.Count()));
-            foreach (var line in nodeList) {
+        private void WriteVertexsSection(IList<string> vertexList, StreamWriter file) {
+            file.WriteLine(String.Format(vertexSectionPrefixFormat, vertexList.Count()));
+            foreach (var line in vertexList) {
                 file.WriteLine(line);
             }
         }
 
-        private void WriteVectorsSection(IList<string> vectorList, StreamWriter file) {
-            file.WriteLine(vectorSectionPrefix);
-            foreach (var line in vectorList) {
+        private void WriteEdgesSection(IList<string> edgeList, StreamWriter file) {
+            file.WriteLine(edgeSectionPrefix);
+            foreach (var line in edgeList) {
                 file.WriteLine(line);
             }
         }

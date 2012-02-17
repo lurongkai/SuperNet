@@ -13,7 +13,7 @@ namespace SuperNet.Framework.Parameter
             _map = map;
         }
 
-        public int CalcShortestPath(Node one, Node two) {
+        public int CalcShortestPath(Vertex one, Vertex two) {
             throw new NotImplementedException();
         }
     }
