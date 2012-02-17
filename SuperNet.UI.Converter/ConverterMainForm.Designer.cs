@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.btnOpen = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblFilePath = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnInDegree = new System.Windows.Forms.Button();
             this.btnClustering = new System.Windows.Forms.Button();
@@ -38,7 +38,7 @@
             // btnOpen
             // 
             this.btnOpen.BackColor = System.Drawing.Color.LightSalmon;
-            this.btnOpen.Location = new System.Drawing.Point(12, 12);
+            this.btnOpen.Location = new System.Drawing.Point(12, 37);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(260, 23);
             this.btnOpen.TabIndex = 0;
@@ -46,19 +46,20 @@
             this.btnOpen.UseVisualStyleBackColor = false;
             this.btnOpen.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // lblFilePath
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 1;
+            this.lblFilePath.AutoSize = true;
+            this.lblFilePath.Location = new System.Drawing.Point(12, 9);
+            this.lblFilePath.Name = "lblFilePath";
+            this.lblFilePath.Size = new System.Drawing.Size(62, 13);
+            this.lblFilePath.TabIndex = 1;
+            this.lblFilePath.Text = "Choice File.";
             // 
             // btnExport
             // 
             this.btnExport.BackColor = System.Drawing.Color.LightSalmon;
             this.btnExport.Enabled = false;
-            this.btnExport.Location = new System.Drawing.Point(12, 186);
+            this.btnExport.Location = new System.Drawing.Point(12, 211);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(260, 23);
             this.btnExport.TabIndex = 2;
@@ -69,7 +70,7 @@
             // btnInDegree
             // 
             this.btnInDegree.Enabled = false;
-            this.btnInDegree.Location = new System.Drawing.Point(12, 41);
+            this.btnInDegree.Location = new System.Drawing.Point(12, 66);
             this.btnInDegree.Name = "btnInDegree";
             this.btnInDegree.Size = new System.Drawing.Size(260, 23);
             this.btnInDegree.TabIndex = 3;
@@ -80,7 +81,7 @@
             // btnClustering
             // 
             this.btnClustering.Enabled = false;
-            this.btnClustering.Location = new System.Drawing.Point(12, 128);
+            this.btnClustering.Location = new System.Drawing.Point(12, 153);
             this.btnClustering.Name = "btnClustering";
             this.btnClustering.Size = new System.Drawing.Size(260, 23);
             this.btnClustering.TabIndex = 4;
@@ -91,7 +92,7 @@
             // btnAveragePath
             // 
             this.btnAveragePath.Enabled = false;
-            this.btnAveragePath.Location = new System.Drawing.Point(12, 157);
+            this.btnAveragePath.Location = new System.Drawing.Point(12, 182);
             this.btnAveragePath.Name = "btnAveragePath";
             this.btnAveragePath.Size = new System.Drawing.Size(260, 23);
             this.btnAveragePath.TabIndex = 5;
@@ -102,7 +103,7 @@
             // btnAverageDegree
             // 
             this.btnAverageDegree.Enabled = false;
-            this.btnAverageDegree.Location = new System.Drawing.Point(12, 99);
+            this.btnAverageDegree.Location = new System.Drawing.Point(12, 124);
             this.btnAverageDegree.Name = "btnAverageDegree";
             this.btnAverageDegree.Size = new System.Drawing.Size(260, 23);
             this.btnAverageDegree.TabIndex = 6;
@@ -113,7 +114,7 @@
             // btnOutDegree
             // 
             this.btnOutDegree.Enabled = false;
-            this.btnOutDegree.Location = new System.Drawing.Point(12, 70);
+            this.btnOutDegree.Location = new System.Drawing.Point(12, 95);
             this.btnOutDegree.Name = "btnOutDegree";
             this.btnOutDegree.Size = new System.Drawing.Size(260, 23);
             this.btnOutDegree.TabIndex = 7;
@@ -125,18 +126,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 221);
+            this.ClientSize = new System.Drawing.Size(284, 244);
             this.Controls.Add(this.btnOutDegree);
             this.Controls.Add(this.btnAverageDegree);
             this.Controls.Add(this.btnAveragePath);
             this.Controls.Add(this.btnClustering);
             this.Controls.Add(this.btnInDegree);
             this.Controls.Add(this.btnExport);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblFilePath);
             this.Controls.Add(this.btnOpen);
             this.Name = "ConverterMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Demo Window";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,7 +146,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnOpen;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFilePath;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnInDegree;
         private System.Windows.Forms.Button btnClustering;

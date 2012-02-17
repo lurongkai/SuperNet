@@ -35,7 +35,7 @@ namespace SuperNet.UI.Converter
                     var source = new ExcelMapDataSource(_path);
                     _map = source.ImportMap();
 
-                    label1.Text = _path;
+                    lblFilePath.Text = _path;
                     btnInDegree.Enabled = true;
                     btnOutDegree.Enabled = true;
                     btnAverageDegree.Enabled = true;
