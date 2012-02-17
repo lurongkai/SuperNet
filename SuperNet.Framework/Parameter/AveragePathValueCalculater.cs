@@ -18,7 +18,7 @@ namespace SuperNet.Framework.Parameter
             var allVertexShortestPathSum = 0;
             var dijkstra = GraphAlogrithmFactory.DijkstraAlogrithm(_map);
             foreach (var vertex in _map.AllVertexs) {
-                dijkstra.ShortestPathSum(vertex);
+                allVertexShortestPathSum += dijkstra.ShortestPathSum(vertex);
             }
 
             var fullArrayEdge = vertexCount * (vertexCount - 1) / 2;

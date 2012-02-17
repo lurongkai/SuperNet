@@ -36,9 +36,11 @@ namespace SuperNet.Framework.Algorithm
 
         private void CalculateByDijkstra(Vertex start, IList<Vertex> allVetexs, IList<Vertex> sureSet, IList<Vertex> unsureSet, IDictionary<Vertex, PathValue> resultArray, bool directed) {
             sureSet.Add(start);
+            resultArray.Add(start, new PathValue { Value = 0 });
             for (int i = 0; i < allVetexs.Count; i++) {
-                foreach (var vertex in start.ReachableVertexs(directed)) {
+                foreach (var vertex in allVetexs) {
                     var vertexPathValue = EvaluatePathValueBySureSet(vertex, sureSet, resultArray, directed);
+                    sureSet.Add(vertex);
                     if (resultArray.Keys.Contains(vertex)) {
                         resultArray[vertex] = new PathValue { Value = vertexPathValue };
                     } else {
@@ -56,7 +58,8 @@ namespace SuperNet.Framework.Algorithm
             int minPathValue = 0;
 
             var allWeights = sureSet
-                .Where(vertex => !vertex.ConnectedWith(vertex))
+                .Where(vertex => vertex.ConnectedWith(targetVertex))
+                .Where(vertex => resultArray[vertex].Value != 0)
                 .Select(vertex => {
                     var edge = vertex.FindEdgeByVertex(targetVertex, directed);
                     return edge.Weight;

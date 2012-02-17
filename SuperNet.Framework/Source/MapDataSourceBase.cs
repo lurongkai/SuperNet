@@ -30,6 +30,7 @@ namespace SuperNet.Framework.Source
                 VertexName = vertexRaw
             };
 
+            _vertexDict.Add(vertexRaw, vertex);
             return vertex;
         }
     }

@@ -39,6 +39,7 @@ namespace SuperNet.UI.Converter
                     btnInDegree.Enabled = true;
                     btnOutDegree.Enabled = true;
                     btnAverageDegree.Enabled = true;
+                    btnClustering.Enabled = true;
                     btnAveragePath.Enabled = true;
                     btnExport.Enabled = true;
                 } catch {
@@ -67,8 +68,8 @@ namespace SuperNet.UI.Converter
             var calculater = new DegreeCalculater(_map);
             try {
                 MessageBox.Show(
-                    "Value",
                     calculater.CalcInDegree().ToString(),
+                    "Value",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             } catch (Exception ex) {
@@ -80,8 +81,8 @@ namespace SuperNet.UI.Converter
             var calculater = new DegreeCalculater(_map);
             try {
                 MessageBox.Show(
-                    "Value",
                     calculater.CalcOutDegree().ToString(),
+                    "Value",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             } catch (Exception ex) {
@@ -93,8 +94,8 @@ namespace SuperNet.UI.Converter
             var calculater = new DegreeCalculater(_map);
             try {
                 MessageBox.Show(
-                    "Value",
                     calculater.CalcAverageDegree().ToString(),
+                    "Value",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             } catch (Exception ex) {
@@ -106,8 +107,8 @@ namespace SuperNet.UI.Converter
             var calculater = new ClusteringCalculater(_map);
             try {
                 MessageBox.Show(
-                    "Value",
                     calculater.CalcClustering().ToString(),
+                    "Value",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             } catch (Exception ex) {
@@ -119,8 +120,8 @@ namespace SuperNet.UI.Converter
             var calculater = new AveragePathValueCalculater(_map);
             try {
                 MessageBox.Show(
-                    "Value",
                     calculater.CalcAveragePathValue().ToString(),
+                    "Value",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             } catch (Exception ex) {
