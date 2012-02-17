@@ -27,6 +27,34 @@ namespace SuperNet.Framework.Domain
             get { return _vectors.Where(v => v.From == this); }
         }
 
+        public bool ConnectedWith(Node other) {
+            foreach (var vector in _vectors) {
+                if (vector.From == other || vector.To == other) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool ConnectFrom(Node from) {
+            foreach (var vector in InDegreeVector) {
+                if (vector.From == from) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool ConnectTo(Node to) {
+            foreach (var vector in OutDegreeVector) {
+                if (vector.To == to) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #region override
         public override string ToString() {
             return NodeName;
         }
@@ -45,5 +73,6 @@ namespace SuperNet.Framework.Domain
         public override int GetHashCode() {
             return NodeName.GetHashCode();
         }
+        #endregion
     }
 }

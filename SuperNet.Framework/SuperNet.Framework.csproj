@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parameter\AveragePathValueCalculater.cs" />
+    <Compile Include="Parameter\ClusteringCalculater.cs" />
     <Compile Include="Parameter\DegreeCalculater.cs" />
     <Compile Include="Parameter\ParameterCalculater.cs" />
     <Compile Include="Source\ExcelMapDataSource.cs" />
