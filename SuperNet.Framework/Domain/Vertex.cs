@@ -54,6 +54,10 @@ namespace SuperNet.Framework.Domain
             return false;
         }
 
+        public Edge FindEdgeByVertex(Vertex vertex, bool directed) { 
+            
+        }
+
         #region override
         public override string ToString() {
             return VertexName;

@@ -9,10 +9,12 @@ namespace SuperNet.Framework.Domain
     {
         private Vertex _from;
         private Vertex _to;
+        private int _weight;
 
-        public Edge(Vertex from, Vertex to) {
+        public Edge(Vertex from, Vertex to, int weight = 1) {
             _from = from;
             _to = to;
+            _weight = weight;
 
             _from.Edges.Add(this);
             _to.Edges.Add(this);

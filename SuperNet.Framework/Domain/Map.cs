@@ -85,5 +85,17 @@ namespace SuperNet.Framework.Domain
         internal IList<Vertex> AllVertexs {
             get { return _vertexs; }
         }
+
+        public Edge FindEdgeByVertex(Vertex vertex) {
+            return _edges
+                .Where(e => e.From == vertex || e.To == vertex)
+                .FirstOrDefault();
+        }
+
+        public Edge FindEdgeByVertex(Vertex one, Vertex two) {
+            return _edges
+                .Where(e => e.From == one && e.To == two)
+                .FirstOrDefault();
+        }
     }
 }
