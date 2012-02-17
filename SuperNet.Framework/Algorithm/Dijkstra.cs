@@ -37,7 +37,7 @@ namespace SuperNet.Framework.Algorithm
             Func<Vertex, bool> connectivityChecker;
         }
 
-        private int EvaluatePathValueBySureSet(Vertex targetVertex, IList<Vertex> sureSet, IDictionary<Vertex, PathValue> resultArray) {
+        private int EvaluatePathValueBySureSet(Vertex targetVertex, IList<Vertex> sureSet, IDictionary<Vertex, PathValue> resultArray, bool directed) {
             if (sureSet.Count == 0) {
                 return 0;//Self.
             }
@@ -49,8 +49,14 @@ namespace SuperNet.Framework.Algorithm
                 }
 
                 var prePathValue = resultArray[vertex].Value;
-                var edge = 
+                var edge = targetVertex.FindEdgeByVertex(vertex, directed);
+                var currentPathValue = prePathValue+edge.Weight;
+                if (currentPathValue < minPathValue) {
+                    minPathValue = currentPathValue;
+                }
             }
+
+            return minPathValue;
         }
 
         private class PathValue {

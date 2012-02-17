@@ -54,8 +54,16 @@ namespace SuperNet.Framework.Domain
             return false;
         }
 
-        public Edge FindEdgeByVertex(Vertex vertex, bool directed) { 
-            
+        public Edge FindEdgeByVertex(Vertex vertex, bool directed) {
+            if (directed) {
+                return InDegreeEdge
+                    .Where(e => e.From == vertex)
+                    .FirstOrDefault();
+            } else {
+                return _edges
+                    .Where(e => e.From == vertex || e.To == vertex)
+                    .FirstOrDefault();
+            }
         }
 
         #region override

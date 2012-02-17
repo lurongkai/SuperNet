@@ -28,6 +28,10 @@ namespace SuperNet.Framework.Domain
             get { return _to; }
         }
 
+        public int Weight {
+            get { return _weight; }
+        }
+
         #region override
         public override string ToString() {
             var format = "{0}-{1}";
