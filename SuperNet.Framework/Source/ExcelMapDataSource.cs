@@ -8,7 +8,7 @@ using SuperNet.Framework.Domain;
 
 namespace SuperNet.Framework.Source
 {
-    public class ExcelMapDataSource:MapDataSourceBase
+    public class ExcelMapDataSource : MapDataSourceBase
     {
         private string _excelPath;
 
@@ -36,6 +36,8 @@ namespace SuperNet.Framework.Source
             var worksheet = excel.WorksheetNoHeader(0);
             if (worksheet != null) {
                 var data = from row in worksheet
+                           where row[0] != String.Empty ||
+                                 row[1] != String.Empty
                            select new string[] {
                                 row[0].Value.ToString(),
                                 row[1].Value.ToString()
@@ -43,6 +45,6 @@ namespace SuperNet.Framework.Source
                 return data.ToList();
             }
             return new List<string[]>();
-        }        
+        }
     }
 }
