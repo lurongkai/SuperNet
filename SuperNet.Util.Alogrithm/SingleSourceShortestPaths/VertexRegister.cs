@@ -24,5 +24,11 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
             TotalWeight = edge.Weight;
             EdgeTracks.Add(edge);
         }
+
+        internal void UpdateRegister(VertexRegister milestoneRegister) {
+            TotalWeight = milestoneRegister.TotalWeight;
+            EdgeTracks.Clear();
+            EdgeTracks = milestoneRegister.EdgeTracks.Select(edge => edge).ToList();
+        }
     }
 }

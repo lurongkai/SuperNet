@@ -21,7 +21,8 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
         private void InitializeRegisterDictionary() {
             var unRegistedVertexs = _map.AllVertexs.Where(vtx => vtx != _startVertex);
             foreach (var vertex in unRegistedVertexs) {
-                var vr = CreateVertexRegister(vertex);
+                var register = CreateVertexRegister(vertex);
+                _registers.Add(vertex, register);
             }
             HandleDirectWeight();
         }
