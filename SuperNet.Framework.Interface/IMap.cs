@@ -1,6 +1,8 @@
-﻿namespace SuperNet.Framework.Interface
+﻿using System.Collections.Generic;
+
+namespace SuperNet.Framework.Interface
 {
-    public interface IMap
+    public interface IMap : IList<IEdge>
     {
          
     }

@@ -7,16 +7,16 @@ using SuperNet.Framework.Interface;
 
 namespace SuperNet.Framework.Domain
 {
-    public class Map:IList<Edge>, IMap
+    public class Map: IMap
     {
-        private IList<Edge> _edges = new List<Edge>();
-        private IList<Vertex> _vertexs = new List<Vertex>();
+        private IList<IEdge> _edges = new List<IEdge>();
+        private IList<IVertex> _vertexs = new List<IVertex>();
 
-        public int IndexOf(Edge item) {
+        public int IndexOf(IEdge item) {
             return _edges.IndexOf(item);
         }
 
-        public void Insert(int index, Edge item) {
+        public void Insert(int index, IEdge item) {
             _edges.Insert(index, item);
         }
 
@@ -24,7 +24,7 @@ namespace SuperNet.Framework.Domain
             _edges.RemoveAt(index);
         }
 
-        public Edge this[int index] {
+        public IEdge this[int index] {
             get {
                 return _edges[index];
             }
@@ -33,7 +33,7 @@ namespace SuperNet.Framework.Domain
             }
         }
 
-        public void Add(Edge item) {
+        public void Add(IEdge item) {
             SaveVertex(item.From);
             SaveVertex(item.To);
 
@@ -42,17 +42,18 @@ namespace SuperNet.Framework.Domain
 
         public void Add(Vertex from, Vertex to) {
             Add(new Edge(from, to));
+            //TODO: remove it!!!!
         }
 
         public void Clear() {
             _edges.Clear();
         }
 
-        public bool Contains(Edge item) {
+        public bool Contains(IEdge item) {
             return _edges.Contains(item);
         }
 
-        public void CopyTo(Edge[] array, int arrayIndex) {
+        public void CopyTo(IEdge[] array, int arrayIndex) {
             _edges.CopyTo(array, arrayIndex);
         }
 
@@ -64,11 +65,11 @@ namespace SuperNet.Framework.Domain
             get { return _edges.IsReadOnly; }
         }
 
-        public bool Remove(Edge item) {
+        public bool Remove(IEdge item) {
             return _edges.Remove(item);
         }
 
-        public IEnumerator<Edge> GetEnumerator() {
+        public IEnumerator<IEdge> GetEnumerator() {
             return _edges.GetEnumerator();
         }
 
@@ -76,24 +77,24 @@ namespace SuperNet.Framework.Domain
             return GetEnumerator();
         }
 
-        private void SaveVertex(Vertex vertex) {
+        private void SaveVertex(IVertex vertex) {
             if (_vertexs.Contains(vertex)) {
                 return;
             }
             _vertexs.Add(vertex);
         }
 
-        internal IList<Vertex> AllVertexs {
+        internal IList<IVertex> AllVertexs {
             get { return _vertexs; }
         }
 
-        public Edge FindEdgeByVertex(Vertex vertex) {
+        public IEdge FindEdgeByVertex(IVertex vertex) {
             return _edges
                 .Where(e => e.From == vertex || e.To == vertex)
                 .FirstOrDefault();
         }
 
-        public Edge FindEdgeByVertex(Vertex one, Vertex two) {
+        public IEdge FindEdgeByVertex(IVertex one, IVertex two) {
             return _edges
                 .Where(e => e.From == one && e.To == two)
                 .FirstOrDefault();

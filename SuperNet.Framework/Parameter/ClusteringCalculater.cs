@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SuperNet.Framework.Domain;
+using SuperNet.Framework.Interface;
 
 namespace SuperNet.Framework.Parameter
 {
@@ -19,7 +20,7 @@ namespace SuperNet.Framework.Parameter
             return sum / _map.AllVertexs.Count;
         }
 
-        private double CalcVertexClustering(Vertex vertex) {
+        private double CalcVertexClustering(IVertex vertex) {
             var vertexDegree = vertex.Edges.Count;
             var vertexCount = _map.AllVertexs.Count;
 

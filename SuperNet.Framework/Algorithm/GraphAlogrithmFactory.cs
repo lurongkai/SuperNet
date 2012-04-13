@@ -8,9 +8,9 @@ namespace SuperNet.Framework.Algorithm
 {
     public static class GraphAlogrithmFactory
     {
-        public static Dijkstra DijkstraAlogrithm(Map map)
-        {
-            return new Dijkstra(map);
-        }
+        //public static Dijkstra DijkstraAlogrithm(Map map)
+        //{
+        //    return new Dijkstra(map);
+        //}
     }
 }

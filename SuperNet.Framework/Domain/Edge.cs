@@ -8,11 +8,11 @@ namespace SuperNet.Framework.Domain
 {
     public class Edge : IEdge
     {
-        private Vertex _from;
-        private Vertex _to;
+        private IVertex _from;
+        private IVertex _to;
         private int _weight;
 
-        public Edge(Vertex from, Vertex to, int weight = 1) {
+        public Edge(IVertex from, IVertex to, int weight = 1) {
             _from = from;
             _to = to;
             _weight = weight;
@@ -21,11 +21,11 @@ namespace SuperNet.Framework.Domain
             _to.Edges.Add(this);
         }
 
-        public Vertex From {
+        public IVertex From {
             get { return _from; }
         }
 
-        public Vertex To {
+        public IVertex To {
             get { return _to; }
         }
 

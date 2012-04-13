@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SuperNet.Framework.Domain;
 using System.IO;
+using SuperNet.Framework.Interface;
 
 namespace SuperNet.Framework.Target
 {
@@ -58,7 +59,7 @@ namespace SuperNet.Framework.Target
             return vertexList;
         }
 
-        private void Walk(Edge edge, IList<string> edgeList) {
+        private void Walk(IEdge edge, IList<string> edgeList) {
             var fromVertexName = edge.From.VertexName;
             var toVertexName = edge.To.VertexName;
             edgeList.Add(String.Format(

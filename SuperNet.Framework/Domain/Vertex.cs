@@ -8,27 +8,27 @@ namespace SuperNet.Framework.Domain
 {
     public class Vertex : IVertex
     {
-        private IList<Edge> _edges;
+        private IList<IEdge> _edges;
 
         public Vertex() {
-            _edges = new List<Edge>();
+            _edges = new List<IEdge>();
         }
 
         public string VertexName { get; set; }
 
-        public IList<Edge> Edges {
+        public IList<IEdge> Edges {
             get { return _edges; }  
         }
 
-        public IEnumerable<Edge> InDegreeEdge {
+        public IEnumerable<IEdge> InDegreeEdge {
             get { return _edges.Where(v => v.To == this); }
         }
 
-        public IEnumerable<Edge> OutDegreeEdge {
+        public IEnumerable<IEdge> OutDegreeEdge {
             get { return _edges.Where(v => v.From == this); }
         }
 
-        public bool ConnectedWith(Vertex other) {
+        public bool ConnectedWith(IVertex other) {
             foreach (var edge in _edges) {
                 if (edge.From == other || edge.To == other) {
                     return true;
@@ -37,7 +37,7 @@ namespace SuperNet.Framework.Domain
             return false;
         }
 
-        public bool ConnectFrom(Vertex from) {
+        public bool ConnectFrom(IVertex from) {
             foreach (var edge in InDegreeEdge) {
                 if (edge.From == from) {
                     return true;
@@ -46,7 +46,7 @@ namespace SuperNet.Framework.Domain
             return false;
         }
 
-        public bool ConnectTo(Vertex to) {
+        public bool ConnectTo(IVertex to) {
             foreach (var edge in OutDegreeEdge) {
                 if (edge.To == to) {
                     return true;
@@ -55,7 +55,7 @@ namespace SuperNet.Framework.Domain
             return false;
         }
 
-        public Edge FindEdgeByVertex(Vertex vertex, bool directed) {
+        public IEdge FindEdgeByVertex(IVertex vertex, bool directed) {
             if (directed) {
                 return InDegreeEdge
                     .Where(e => e.From == vertex)
@@ -88,7 +88,7 @@ namespace SuperNet.Framework.Domain
         }
         #endregion
 
-        internal IEnumerable<Vertex> ReachableVertexs(bool directed) {
+        internal IEnumerable<IVertex> ReachableVertexs(bool directed) {
             if (directed) {
                 return _edges.Select(edge => edge.To);
             } else {
