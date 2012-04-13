@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SuperNet.Framework.Interfaces;
 
 namespace SuperNet.Framework.Domain
 {
-    public class Vertex
+    public class Vertex : IVertex
     {
         private IList<Edge> _edges;
 
