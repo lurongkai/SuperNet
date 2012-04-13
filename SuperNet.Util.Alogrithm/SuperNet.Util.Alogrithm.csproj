@@ -40,8 +40,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
-    <Compile Include="Dijkstra.cs" />
+    <Compile Include="SingleSourceShortestPaths\Dijkstra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleSourceShortestPaths\PathRecord.cs" />
+    <Compile Include="SingleSourceShortestPaths\RegisterManager.cs" />
+    <Compile Include="SingleSourceShortestPaths\ShortestPathResult.cs" />
+    <Compile Include="SingleSourceShortestPaths\VertexRegister.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SuperNet.Framework.Interface\SuperNet.Framework.Interface.csproj">
+      <Project>{e948c04a-de15-4095-a866-90cd338011e1}</Project>
+      <Name>SuperNet.Framework.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

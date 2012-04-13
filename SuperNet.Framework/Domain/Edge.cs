@@ -10,9 +10,9 @@ namespace SuperNet.Framework.Domain
     {
         private IVertex _from;
         private IVertex _to;
-        private int _weight;
+        private double _weight;
 
-        public Edge(IVertex from, IVertex to, int weight = 1) {
+        public Edge(IVertex from, IVertex to, double weight = 1) {
             _from = from;
             _to = to;
             _weight = weight;
@@ -29,7 +29,7 @@ namespace SuperNet.Framework.Domain
             get { return _to; }
         }
 
-        public int Weight {
+        public double Weight {
             get { return _weight; }
         }
 

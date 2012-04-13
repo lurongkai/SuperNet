@@ -4,6 +4,6 @@
     {
         IVertex From { get; }
         IVertex To { get; }
-        int Weight { get; }
+        double Weight { get; }
     }
 }

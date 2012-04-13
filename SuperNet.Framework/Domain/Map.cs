@@ -84,7 +84,7 @@ namespace SuperNet.Framework.Domain
             _vertexs.Add(vertex);
         }
 
-        internal IList<IVertex> AllVertexs {
+        public IList<IVertex> AllVertexs {
             get { return _vertexs; }
         }
 
