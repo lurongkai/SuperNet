@@ -41,5 +41,9 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
         internal VertexRegister GetRegister(IVertex vertex) {
             return _registers[vertex];
         }
+
+        internal ShortestPathResult GenerateResult() {
+            return new ShortestPathResult(_registers);
+        }
     }
 }

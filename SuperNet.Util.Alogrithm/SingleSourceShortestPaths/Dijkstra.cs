@@ -16,25 +16,14 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
             _registerManager = new RegisterManager(map, startVertex);
         }
 
-        public void ExecuteDijkstra() {
+        public ShortestPathResult ExecuteDijkstra() {
             var milestone = GetMilestoneVertex();
             while (milestone != null) {
                 var milestoneRegister = _registerManager.GetRegister(milestone);
                 UpdateRelatedRegister(milestoneRegister);
                 milestone = GetMilestoneVertex();
             }
-        }
-
-        private void UpdateRelatedRegister(VertexRegister milestoneRegister) {
-            var milestoneVertex = milestoneRegister.Vertex;
-            foreach(var edge in milestoneVertex.OutDegreeEdge) {
-                var targetRegister = _registerManager.GetRegister(edge.To);
-                var attemtpWeight = milestoneRegister.TotalWeight + edge.Weight;
-                if(attemtpWeight < targetRegister.TotalWeight) {
-                    targetRegister.UpdateRegister(milestoneRegister);
-                }
-            }
-            milestoneRegister.Registed = true;
+            return _registerManager.GenerateResult();
         }
 
         private IVertex GetMilestoneVertex() {
@@ -58,6 +47,18 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
                 }
             }
             return target;
+        }
+
+        private void UpdateRelatedRegister(VertexRegister milestoneRegister) {
+            var milestoneVertex = milestoneRegister.Vertex;
+            foreach(var edge in milestoneVertex.OutDegreeEdge) {
+                var targetRegister = _registerManager.GetRegister(edge.To);
+                var attemtpWeight = milestoneRegister.TotalWeight + edge.Weight;
+                if(attemtpWeight < targetRegister.TotalWeight) {
+                    targetRegister.UpdateRegister(milestoneRegister);
+                }
+            }
+            milestoneRegister.Registed = true;
         }
     }
 }
