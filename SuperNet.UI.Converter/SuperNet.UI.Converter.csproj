@@ -77,6 +77,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SuperNet.Framework.Interface\SuperNet.Framework.Interface.csproj">
+      <Project>{e948c04a-de15-4095-a866-90cd338011e1}</Project>
+      <Name>SuperNet.Framework.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SuperNet.Framework\SuperNet.Framework.csproj">
       <Project>{A3C8BD73-8656-400F-B051-C949FBD18E74}</Project>
       <Name>SuperNet.Framework</Name>

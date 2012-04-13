@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SuperNet.Framework.Interfaces;
+using SuperNet.Framework.Interface;
 
 namespace SuperNet.Framework.Domain
 {

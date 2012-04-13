@@ -37,7 +37,7 @@ namespace SuperNet.Util.Alogrithm
             BeProcessed = false;
         }
 
-        public bool BeProcessed { get; private set; }//是否已被处理
+        public bool BeProcessed { get; set; }//是否已被处理
         public string CurNodeID { get; private set; }
         public double Weight { get; set; }//累积的权值
         public ArrayList PassedIDList { get; private set; }//路径
@@ -127,7 +127,7 @@ namespace SuperNet.Util.Alogrithm
             }
             string[] passedNodeIDs = new string[pPath.PassedIDList.Count];
             for (int i = 0; i < passedNodeIDs.Length; i++) {
-                passedNodeIDs = pPath.PassedIDList.ToString();
+                passedNodeIDs[i] = pPath.PassedIDList[i].ToString();
             }
             RoutePlanResult result = new RoutePlanResult(passedNodeIDs, pPath.Weight);
             return result;
@@ -150,6 +150,13 @@ namespace SuperNet.Util.Alogrithm
                 }
             }
             return destNode;
+        }
+    }
+
+    public class RoutePlanResult
+    {
+        public RoutePlanResult(string[] passedNodes, double weight) {
+            
         }
     }
 }

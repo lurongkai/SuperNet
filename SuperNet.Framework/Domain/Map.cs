@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using SuperNet.Framework.Interface;
 
 namespace SuperNet.Framework.Domain
 {
-    public class Map:IList<Edge>
+    public class Map:IList<Edge>, IMap
     {
         private IList<Edge> _edges = new List<Edge>();
         private IList<Vertex> _vertexs = new List<Vertex>();
