@@ -18,12 +18,13 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
         private void ParseVertexTracks(IList<IEdge> edgeTracks) {
             var tempTracks = new List<IVertex>();
             for (int i = 0; i < edgeTracks.Count; i++) {
-                var track = edgeTracks[i];
+                var edge = edgeTracks[i];
                 if (i == 0) {
-                    tempTracks.Add(track.From);
+                    tempTracks.Add(edge.From);
                 }
-                tempTracks.Add(track.To);
+                tempTracks.Add(edge.To);
             }
+            VertexTracks = tempTracks.ToArray();
         }
 
         public IVertex Target { get; private set; }

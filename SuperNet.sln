@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperNet.Util.Alogrithm", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperNet.Framework.Interface", "SuperNet.Framework.Interface\SuperNet.Framework.Interface.csproj", "{E948C04A-DE15-4095-A866-90CD338011E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DijkstraTest", "DijkstraTest\DijkstraTest.csproj", "{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,16 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1C99B641-2B45-4DCA-9D33-71D4FBDAF38F}.Release|x86.ActiveCfg = Release|Any CPU
 		{3669F3DB-3062-4FF1-B6BA-CBE50EA7A948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3669F3DB-3062-4FF1-B6BA-CBE50EA7A948}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3669F3DB-3062-4FF1-B6BA-CBE50EA7A948}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

@@ -55,7 +55,7 @@ namespace SuperNet.Util.Alogrithm.SingleSourceShortestPaths
                 var targetRegister = _registerManager.GetRegister(edge.To);
                 var attemtpWeight = milestoneRegister.TotalWeight + edge.Weight;
                 if(attemtpWeight < targetRegister.TotalWeight) {
-                    targetRegister.UpdateRegister(milestoneRegister);
+                    targetRegister.UpdateRegister(milestoneRegister, edge);
                 }
             }
             milestoneRegister.Registed = true;
