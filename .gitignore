@@ -39,10 +39,8 @@
 *.sbr
 *.sdf
 ipch/
-obj/
-[Bb]in
-[Dd]ebug*/
-[Rr]elease*/
+[Oo]bj/
+[Bb]in/
  
 #
 #Tooling
