@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SuperNet.Framework.Domain;
+using SuperNet.Framework.Interface;
 using SuperNet.Util.Alogrithm.SingleSourceShortestPaths;
 
 namespace DijkstraTest
@@ -38,10 +39,46 @@ namespace DijkstraTest
             map.Add(e27);
             map.Add(e74);
 
+            PrintMap(map);
+
+            Console.WriteLine("Dijkstra start from {0}", v1);
             var dijkstra = new Dijkstra(map, v1);
             var result = dijkstra.ExecuteDijkstra();
+            PrintResult(result);
 
             Console.ReadLine();
         }
+
+        private static void PrintMap(Map map) {
+            foreach (var edge in map) {
+                Console.WriteLine("Edge: {0}, weight:{1}", edge, edge.Weight);
+            }
+            Console.WriteLine();
+        }
+
+        private static void PrintResult(ShortestPathResult result) {
+            foreach (var pr in result) {
+                Console.WriteLine("--------------------------------------------");
+                Console.WriteLine("Target: {0}", pr.Target);
+                PrintEdgeTrack(pr.EdgeTracks);
+                PrintVertexTrack(pr.VertexTracks);
+                Console.WriteLine("--------------------------------------------");
+            }
+        }
+
+        private static void PrintEdgeTrack(IEdge[] edge) {
+            Console.WriteLine("Edge tracks:");
+            for (int i = 0; i < edge.Count(); i++) {
+                Console.WriteLine("{0}: {1}", i + 1, edge[i]);
+            }
+        }
+
+        private static void PrintVertexTrack(IVertex[] vertex) {
+            Console.WriteLine("Vertex tracks:");
+            for (int i = 0; i < vertex.Count(); i++) {
+                Console.WriteLine("{0}: {1}", i + 1, vertex[i]);
+            }
+        }
+
     }
 }
